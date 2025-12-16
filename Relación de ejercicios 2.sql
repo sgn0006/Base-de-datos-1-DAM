@@ -3,7 +3,8 @@ use TiendaTecnologia;
 select Id_producto, Id_fab, Descripcion,Precio 
 from Productos;
 -- 2
-select * from Clientes 
+-- select * from Clientes 
+select * from productos
 where Id_cliente = 2;
 -- 3
 select * from Productos 
@@ -11,10 +12,12 @@ where Precio >= 100;
 -- 4
 select * from Clientes 
 where Ciudad = 'Madrid' or Ciudad ='Barcelona';
+-- Para simplificar
+-- select * from clientes where ciudad in ('Madrid', 'Barcelona');
 -- 5
 select avg(Precio) 
 from Productos 
-where Id_fab  = '1';
+where Id_fab  = 1;
 -- 6
 select min(Fecha_pedido) 
 from Pedidos;
@@ -92,9 +95,19 @@ from Pedidos;
 -- 28
 select N_pedido,Fecha_creacion,Fecha_pedido from Pedidos;
 -- 29
--- select N_pedido,Estado, from Pedidos;
+select * from Pedidos;
+select n_pedido, estado,
+	case 
+		when estado = 'completado' then 'Finalizado'
+        when estado = 'cancelar' then 'Anulado'
+	end as estado_personalizado
+from pedidos;
 -- 30
 select * from Pedidos where year(Fecha_pedido) = 2023;
+-- 31
+select *, power(precio,2) as precio_elevado from productos;
+-- 32 
+select *, round(precio,1) as precio_redondeado from productos;
 -- 33
 select N_pedido,year(Fecha_pedido)
 from Pedidos;
@@ -113,9 +126,20 @@ from Clientes;
 select Nombre,
 substring(Nombre, 1, 4) 
 from Clientes;
--- 40
-select Ciudad,
-count(*)
-from Clientes
-group by Ciudad
-having count(*) > 1;
+-- 38
+select descripcion, precio,
+	case 
+		when precio >= 500
+		then 'caro' 
+        else 'barato'
+	end as clasificacion
+from productos;
+-- 39
+select id_producto, 
+sum(cant) 
+from detalles_pedido 
+group by id_ptoducto 
+having suma >=2;
+-- 40 
+insert into clientes (nombre, direccion, ciudad, teléfono, email) values ('Saúl García', 'Calle Huelma', '123456789', 'sgn0006@alu.medac.es');
+select *from clientes;

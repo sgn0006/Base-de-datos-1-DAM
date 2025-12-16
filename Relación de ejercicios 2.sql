@@ -141,5 +141,6 @@ from detalles_pedido
 group by id_ptoducto 
 having suma >=2;
 -- 40 
-insert into clientes (nombre, direccion, ciudad, teléfono, email) values ('Saúl García', 'Calle Huelma', '123456789', 'sgn0006@alu.medac.es');
-select *from clientes;
+insert into clientes (nombre, direccion, ciudad, teléfono, email) 
+values ('Saúl García', 'Calle Huelma', '123456789', 'sgn0006@alu.medac.es');
+select ciudad, count(*) as cantidad from clientes group by ciudad having cantidad >= 2;

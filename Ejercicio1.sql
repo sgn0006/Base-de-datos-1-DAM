@@ -21,7 +21,6 @@ create table proveedor(
 		NIF int primary key auto_increment,
 	direccion varchar(50) not null,
     nombre varchar(50) not null,
-    -
     foreign key (producto) references producto(codigo),
     foreign key (clientes) references clientes(DNI)
 );

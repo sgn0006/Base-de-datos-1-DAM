@@ -81,4 +81,4 @@ select Pais, substr(Pais,1,3) from fabricantes;
 select replace(Direccion, 'Calle', 'Avda.') from clientes;
 
 -- 27.- Calcular cuántos días han pasado desde cada pedido hasta hoy (función SYSDATE):
-select n_pedido, datediff(sysdate(), fecha_pedido) from pedido
+select n_pedido, datediff(sysdate(), fecha_pedido) from pedido;

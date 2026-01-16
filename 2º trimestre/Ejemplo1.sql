@@ -2,7 +2,7 @@ use profesores;
 
 select * from profesores;
 select * from coordinadores;
-select * from  asignaturas;
+select * from asignaturas;
 select * from imparte;
 select * from prepara;
 
@@ -38,3 +38,24 @@ select nombre,descripcion from profesores p
 	join imparte i on p.dni = p.dni
 		join asignaturas a 
 			on a.codigo = i.asignatura;
+
+
+-- SUBCONSULTAS
+
+-- 1.- Mostrar todos los datos de las asignaturas que tienen más créditos que la asignatura PC
+select * from asignaturas where creditos > 
+	(select creditos from asignaturas where codigo = 'PC');
+
+-- 2.- Mostrar la descripción de las asignaturas que tienen más créditos que todas las damás
+select descripcion from asignaturas where creditos =
+	(select max(creditos) from asignaturas);
+
+select descripcion from asignaturas where creditos >= 
+	all (select creditos from asignaturas);
+
+-- 3.- Nombre de las asignaturas que no son las que menos creditos tienen
+select * from asignaturas where creditos >
+	(select min(creditos) from asignaturas);
+    
+select descripcion from asignaturas where creditos > 
+	any (select creditos from asignaturas);

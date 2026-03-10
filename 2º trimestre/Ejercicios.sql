@@ -1,9 +1,9 @@
 use liga;
 
 -- 1.- Datos del jugador más alto de la liga.
-
+select * from jugador order by altura desc limit 1;
 -- 2.- Datos de todos los jugadores que pertenecen al Caja Laboral.
-
+select * from jugador j join equipo e on e.nombre = 'Caja Laboral';
 -- 3.- Suma de las alturas de los jugadores que sean del CAI Zaragoza o del Real Madrid.
 
 -- 4.- Datos de los jugadores que miden más que todos los jugadores del Caja Laboral.

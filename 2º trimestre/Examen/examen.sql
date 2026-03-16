@@ -20,10 +20,10 @@ on (cu.id = al.id_curso_escolar) ;
 
 -- 4 *
 select * from curso_escolar;
-select c.*, count(*) as 'Nº Matricula' from curso_escolar c 
-right join alumno_se_matricula_asignatura a on (c.id = a.id_alumno)
-join asignatura asi on (a.id_asignatura = asi.id) group by c.id, asi.curso;
+select c.*, count(a.id_asignatura) from curso_escolar c 
+left join alumno_se_matricula_asignatura a on (c.id = a.id_curso_escolar) group by c.id;
 
+select * from alumno_se_matricula_asignatura;
 -- 5
 select 
 p.nombre as 'Nombre',

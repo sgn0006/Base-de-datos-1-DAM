@@ -29,7 +29,7 @@ create user 'Ejemplo_user'@'192.168.20.105' identified by '123456';
 select * from vista_asignaturas_profesores;
 
 -- 3.- Crear una vista que solo muestre todos los datos menos el sueldo del profesor como seguridad
-create view vista_prfesores_seguridad as select id_profesor, nombre, email from profesores;
+create view vista_profesores_seguridad as select id_profesor, nombre, email from profesores;
 
 -- 4.- Consulta la vista creada
 select * from vista_profesores_seguridad;

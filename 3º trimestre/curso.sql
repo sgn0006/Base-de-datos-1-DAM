@@ -50,13 +50,21 @@ begin
 end;
 
 /*6. Declarar variable númerica nota y mostrar con case si aprobado o no */
-declare
-    varnota varchar(30);
-begin
-    case numero
-    when numero > 5 then set (varnota = 'aprobado')
-end;
 
 /*7. Excepción ZERO_DIVISE */
 
 /*8. Excepción personalizada con RAISE */
+declare
+    edad number := -1;
+    edad_exception exception;
+begin
+
+if edad < 0 or edad > 120 then
+    raise edad_exception;
+end if;
+
+exception
+    when edad_exception then 
+        dbm_output.put_line('Error en la variable edad');
+    
+end;

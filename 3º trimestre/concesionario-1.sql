@@ -126,6 +126,7 @@ begin
     else if v_cant > 0 then 
     dbms_output.put_line('El empleado no tiene ventas');
     end if;
+    end if;
 end;
 
 begin 
@@ -199,3 +200,15 @@ end;
 
 insert into coche (matricula, id_modelo, precio_compra) values ('1234AA',1,0);
 
+-- 4
+CREATE OR REPLACE TRIGGER trg_update_precio_con_iva
+BEFORE UPDATE ON coche
+FOR EACH ROW
+BEGIN
+    -- Comprobar si el precio_compra ha cambiado
+    IF :OLD.precio_compra != :NEW.precio_compra THEN
+        -- Aplicar el 21% de IVA al nuevo precio
+        :NEW.precio_compra := :NEW.precio_compra * 1.21;
+    END IF;
+END;
+/

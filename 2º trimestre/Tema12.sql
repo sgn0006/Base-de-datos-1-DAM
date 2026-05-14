@@ -28,7 +28,7 @@ insert into fabricantes (clave_fabricante, nombre) values
 (4, 'Lexar'),
 (5, 'Seagate');
 
-select * from fabricantes;
+select * from articulos;
 
 insert into articulos (nombre, precio, clave_fabricante, existencias) values
 ('teclado', 65.75, 3, 250),
